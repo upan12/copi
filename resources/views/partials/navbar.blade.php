@@ -14,6 +14,7 @@
         <a href="#review">review</a>
         <a href="#contact">contact</a>
         <a href="#blogs">blogs</a>
+        <a href="/dashboard">dashboard</a>
     </nav>
 
     <div class="icons">
