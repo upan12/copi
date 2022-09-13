@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
-class DashboardPostController extends Controller
+class DashboardMenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,6 +20,10 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
+        // return view('dashboard.posts.index');
+        return view('dashboard.menu.index', [
+            'menus' => Product::all()
+        ]);
     }
 
     /**
@@ -28,6 +33,7 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
+        return view('dashboard.menu.create');
     }
 
     /**
@@ -38,6 +44,19 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
+        // ddd($request);
+        // return $request;
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'price' => 'required|min:4|max:255',
+            'stock' => 'required|min:1|max:255',
+            'variant' => 'required',
+            'image' => 'image|file|max:1024'
+        ]);
+
+        Product::create($validateData);
+
+        return redirect('/dashboard/posts')->with('success', 'New post has been added!');
     }
 
     /**
