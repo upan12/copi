@@ -45,7 +45,8 @@ class DashboardMenuController extends Controller
     public function store(Request $request)
     {
         // ddd($request);
-        // return $request;
+        // return $request->file('image')->store('menu-image');
+
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'price' => 'required|min:4|max:255',
@@ -65,8 +66,11 @@ class DashboardMenuController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($post)
+    public function show(Menu $menu)
     {
+        return view('dashboard.menu.show', [
+            'menu' => $menu
+        ]);
     }
 
     /**
@@ -75,8 +79,11 @@ class DashboardMenuController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($post)
+    public function edit(Menu $menu)
     {
+        return view('dashboard.menu.edit', [
+            'menu' => $menu
+        ]);
     }
 
     /**
@@ -86,8 +93,29 @@ class DashboardMenuController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $post)
+    public function update(Request $request, menu $menu)
     {
+        $rules = [
+            'name' => 'required|max:255',
+            'price' => 'required|min:4|max:255',
+            'stock' => 'required|min:1|max:255',
+            'variant' => 'required',
+            'image' => 'image|file|max:1024'
+        ];
+
+        $validateData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validateData['image'] = $request->file('image')->store('menu-image');
+        }
+
+        menu::where('id', $menu->id)
+            ->update($validateData);
+
+        return redirect('/dashboard/menu')->with('success', 'Menu has been updated!');
     }
 
     /**
@@ -96,8 +124,13 @@ class DashboardMenuController extends Controller
      * @param  \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($post)
+    public function destroy(Menu $menu)
     {
+        // if ($menu->image) {
+        //     Storage::delete($menu->Image);
+        // }
+        Menu::destroy($menu->id);
+        return redirect('/dashboard/menu')->with('success', 'Menu has been Deleted!');
     }
 
     public function checkSlug(Request $request)

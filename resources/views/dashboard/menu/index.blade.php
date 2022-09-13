@@ -35,7 +35,7 @@
                                     data-feather="eye"></span></a>
                             <a href="/dashboard/menu/{{ $menu->id }}/edit" class="badge bg-warning"><span
                                     data-feather="edit"></span></a>
-                            <form class="d-inline" action="/dashboard/posts/{{ $menu->id }}" method="post">
+                            <form class="d-inline" action="/dashboard/menu/{{ $menu->id }}" method="post">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="badge bg-danger border-0"
