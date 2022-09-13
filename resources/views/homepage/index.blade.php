@@ -70,49 +70,16 @@
     <h1 class="heading"> our <span>menu</span> </h1>
 
     <div class="box-container">
-
+        @foreach ($menus as $menu)
+            
         <div class="box">
             <img src="/images/menu-1.png" alt="">
-            <h3>tasty and healty</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
+            <h3>{{ $menu->name }}</h3>
+            <div class="price">Rp {{ $menu->price }} <span>8.913.749.032.804</span></div>
             <a href="#" class="btn">add to cart</a>
         </div>
-
-        <div class="box">
-            <img src="/images/menu-2.png" alt="">
-            <h3>tasty and healty</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <img src="/images/menu-3.png" alt="">
-            <h3>tasty and healty</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <img src="/images/menu-4.png" alt="">
-            <h3>tasty and healty</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <img src="/images/menu-5.png" alt="">
-            <h3>tasty and healty</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <img src="/images/menu-6.png" alt="">
-            <h3>tasty and healty</h3>
-            <div class="price">$15.99 <span>20.99</span></div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
+        @endforeach
+    
     </div>
 
 </section>
@@ -124,73 +91,33 @@
     <h1 class="heading"> our <span>products</span> </h1>
 
     <div class="box-container">
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="image">
-                <img src="/images/product-1.png" alt="">
-            </div>
-            <div class="content">
-                <h3>fresh coffee</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <div class="price">$15.99 <span>$20.99</span></div>
-            </div>
+@foreach ($products as $product)
+    
+<div class="box">
+    <div class="icons">
+        <a href="#" class="fas fa-shopping-cart"></a>
+        <a href="#" class="fas fa-heart"></a>
+        <a href="#" class="fas fa-eye"></a>
+    </div>
+    <div class="image">
+        <img src="/images/product-1.png" alt="">
+    </div>
+    <div class="content">
+        <h3>{{ $product->name }}</h3>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
         </div>
+        <div class="price">Rp {{ $product->price }} <span>Rp 9.290.382.109</span></div>
+    </div>
+</div>
 
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="image">
-                <img src="/images/product-2.png" alt="">
-            </div>
-            <div class="content">
-                <h3>fresh coffee</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <div class="price">$15.99 <span>$20.99</span></div>
-            </div>
-        </div>
+@endforeach
 
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="image">
-                <img src="/images/product-3.png" alt="">
-            </div>
-            <div class="content">
-                <h3>fresh coffee</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <div class="price">$15.99 <span>$20.99</span></div>
-            </div>
-        </div>
-
+       
     </div>
 
 </section>
