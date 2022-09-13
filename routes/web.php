@@ -26,6 +26,10 @@ Route::get('/dashboard/posts', function () {
     return view('dashboard.posts.index');
 });
 
+Route::get('/dashboard/posts/create', function () {
+    return view('dashboard.posts.create');
+});
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard.index');
 // })->middleware('auth');
