@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +22,6 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
-Route::get('/dashboard/posts', function () {
-    return view('dashboard.posts.index');
-});
-
-Route::get('/dashboard/posts/create', function () {
-    return view('dashboard.posts.create');
-});
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard.index');
-// })->middleware('auth');
+Route::resource('/dashboard/menu', DashboardMenuController::class);
 
 require __DIR__ . '/auth.php';
