@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Category;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Http\Controllers\Controller;
-use App\Models\Menu;
-use Illuminate\Support\Facades\Storage;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Http\Request;
 
-class DashboardMenuController extends Controller
+class DashboardProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        // return view('dashboard.posts.index');
-        return view('dashboard.menu.index', [
-            'menus' => Menu::all()
+        return view('dashboard.product.index', [
+            'products' => Product::all()
         ]);
     }
 
@@ -33,7 +27,7 @@ class DashboardMenuController extends Controller
      */
     public function create()
     {
-        return view('dashboard.menu.create');
+        return view('dashboard.product.create');
     }
 
     /**
@@ -44,63 +38,61 @@ class DashboardMenuController extends Controller
      */
     public function store(Request $request)
     {
-        // ddd($request);
-        // return $request;
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'price' => 'required|min:4|max:255',
             'stock' => 'required|min:1|max:255',
-            'variant' => 'required',
+            'weight' => 'required|min:1|max:255',
             'image' => 'image|file|max:1024'
         ]);
 
-        Menu::create($validateData);
+        Product::create($validateData);
 
-        return redirect('/dashboard/menu')->with('success', 'New post has been added!');
+        return redirect('/dashboard/product')->with('success', 'New post has been added!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($post)
+    public function show(Product $product)
     {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($post)
+    public function edit(Product $product)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $post)
+    public function update(Request $request, Product $product)
     {
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post $post
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($post)
+    public function destroy(Product $product)
     {
-    }
-
-    public function checkSlug(Request $request)
-    {
+        //
     }
 }

@@ -13,6 +13,12 @@
             Menu
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/product*') ? 'active' : '' }}" href="/dashboard/product">
+            <span data-feather="file-text"></span>
+            Product
+          </a>
+        </li>
       </ul>
 
       @can('admin')
