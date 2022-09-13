@@ -8,9 +8,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
+          <a class="nav-link {{ Request::is('dashboard/menu*') ? 'active' : '' }}" href="/dashboard/menu">
             <span data-feather="file-text"></span>
-            Posts
+            Menu
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/product*') ? 'active' : '' }}" href="/dashboard/product">
+            <span data-feather="file-text"></span>
+            Product
           </a>
         </li>
       </ul>

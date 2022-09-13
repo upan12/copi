@@ -6,9 +6,9 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product::class>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
  */
-class ProductFactory extends Factory
+class MenuFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->sentence(mt_rand(2,5)),
             'price' => $this->faker->randomNumber(6),
             'stock' => $this->faker->randomNumber(3),
-            'weight' => $this->faker->randomNumber(3),
+            'variant' => $this->faker->sentence(mt_rand(1,2)),
             'remember_token' => Str::random(10),
         ];
     }

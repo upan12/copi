@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('stock');
+            $table->integer('weight');
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
