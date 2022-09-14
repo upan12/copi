@@ -55,6 +55,8 @@ class DashboardMenuController extends Controller
             'image' => 'image|file|max:1024'
         ]);
 
+        $validateData['image'] = $request->file('image')->store('menu-image');
+
         Menu::create($validateData);
 
         return redirect('/dashboard/menu')->with('success', 'New post has been added!');
@@ -126,9 +128,9 @@ class DashboardMenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        // if ($menu->image) {
-        //     Storage::delete($menu->Image);
-        // }
+        if ($menu->image) {
+            Storage::delete($menu->image);
+        }
         Menu::destroy($menu->id);
         return redirect('/dashboard/menu')->with('success', 'Menu has been Deleted!');
     }

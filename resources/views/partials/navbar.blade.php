@@ -20,16 +20,22 @@
     <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
         <div class="fas fa-shopping-cart" id="cart-btn"></div>
-        <a href="#"><div class="fas fa-user" id="login-btn"></div></a>
+        <a href="#">
+            <div class="fas fa-user" id="login-btn"></div>
+        </a>
 
         <div class="fas fa-bars" id="menu-btn"></div>
     </div>
 
     <!-- Search -->
+    <form action="" method="">
+    
     <div class="search-form">
-        <input type="search" id="search-box" placeholder="search here...">
+        <input type="search" name="search" value="{{ request('search') }}" id="search-box"
+            placeholder="search here..." aria-label="search">
         <label for="search-box" class="fas fa-search"></label>
     </div>
+</form>
 
     <!-- Cart -->
     <div class="cart-items-container">
@@ -68,6 +74,6 @@
         <a href="#" class="btn">checkout now</a>
     </div>
 
-    
+
 
 </header>

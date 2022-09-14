@@ -17,6 +17,8 @@ use App\Http\Controllers\HomepageController;
 */
 
 Route::get('/', [HomepageController::class, 'index']);
+Route::post('/pesan', [HomepageController::class, 'pesan']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
