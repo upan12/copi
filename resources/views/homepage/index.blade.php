@@ -219,41 +219,20 @@
 
     <div class="box-container">
 
+        @foreach ($blogs as $blog)
+            
         <div class="box">
             <div class="image">
                 <img src="/images/blog-1.jpeg" alt="">
             </div>
             <div class="content">
-                <a href="#" class="title">tasty and refreshing coffee</a>
-                <span>by admin / 10 September, 2022</span>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, dicta.</p>
-                <a href="#" class="btn">read more</a>
+                <a href="/blog?slug={{ $blog->slug }}" class="title">{{ $blog->title }}</a>
+                <span>{{ $blog->created_at->diffForHumans() }}</span>
+                <p>{{ $blog->excerpt }}</p>
+                <a href="/{{ $blog->slug }}" class="btn">read more</a>
             </div>
         </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/images/blog-2.jpeg" alt="">
-            </div>
-            <div class="content">
-                <a href="#" class="title">tasty and refreshing coffee</a>
-                <span>by admin / 10 September, 2022</span>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, dicta.</p>
-                <a href="#" class="btn">read more</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/images/blog-3.jpeg" alt="">
-            </div>
-            <div class="content">
-                <a href="#" class="title">tasty and refreshing coffee</a>
-                <span>by admin / 10 September, 2022</span>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, dicta.</p>
-                <a href="#" class="btn">read more</a>
-            </div>
-        </div>
+        @endforeach
 
     </div>
 
