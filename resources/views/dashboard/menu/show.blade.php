@@ -20,7 +20,7 @@
 
             @if ($menu->image)
             <div style="max-height: 350px; overflow: hidden;">
-                <img src="{{ asset('storage/' . $menu->image) }}" alt="" class="img-fluid mt-3 d-block">
+                <img src="{{ asset($menu->image) }}" alt="" class="img-fluid mt-3 d-block">
             </div>
             @else
                 <img src="https://source.unsplash.com/1200x400?coffee" alt="coffee" class="img-fluid mt-3">
