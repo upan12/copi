@@ -14,9 +14,11 @@ class HomepageController extends Controller
         // return view('dashboard.posts.index');
         return view('homepage.index', [
             'menus' => Menu::all(),
+            'menus' => Menu::latest()->filter(request(['search']))->get(),
             'products' => Product::all(),
-
-            'blogs' => Blog::all()
+            'products' => Product::latest()->filter(request(['search']))->get(),
+            'blogs' => Blog::all(),
+            'blogs' => Blog::latest()->filter(request(['search']))->get()
         ]);
     }
     public function pesan()

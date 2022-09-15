@@ -229,24 +229,25 @@
 
         <h1 class="heading"> our <span>blogs</span> </h1>
 
-        <div class="box-container">
-
-        @foreach ($blogs as $blog)
-            
-        <div class="box">
-            <div class="image">
-                <img src="/images/blog-1.jpeg" alt="">
+        @if ($blogs->count())
+            <div class="box-container">
+                @foreach ($blogs as $blog)
+                    <div class="box">
+                        <div class="image">
+                            <img src="/images/blog-1.jpeg" alt="">
+                        </div>
+                        <div class="content">
+                            <a href="/blog?slug={{ $blog->slug }}" class="title">{{ $blog->title }}</a>
+                            <span>{{ $blog->created_at->diffForHumans() }}</span>
+                            <p>{{ $blog->excerpt }}</p>
+                            <a href="/{{ $blog->slug }}" class="btn">read more</a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="content">
-                <a href="/blog?slug={{ $blog->slug }}" class="title">{{ $blog->title }}</a>
-                <span>{{ $blog->created_at->diffForHumans() }}</span>
-                <p>{{ $blog->excerpt }}</p>
-                <a href="/{{ $blog->slug }}" class="btn">read more</a>
-            </div>
-        </div>
-        @endforeach
-
-    </div>
+        @else
+            <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No blogs found</h3>
+        @endif
 
         </div>
 
