@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -14,8 +15,8 @@ class HomepageController extends Controller
         return view('homepage.index', [
             'menus' => Menu::all(),
             'products' => Product::all(),
-            'menus' => Menu::latest()->filter(request(['search']))->get(),
-            'products' => Product::latest()->filter(request(['search']))->get()
+
+            'blogs' => Blog::all()
         ]);
     }
     public function pesan()

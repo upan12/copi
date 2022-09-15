@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardProductController extends Controller
 {
@@ -38,7 +39,9 @@ class DashboardProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+        // return $request->file('image')->store('product-images');
+        // ddd($request);
+        $validatedData = $request->validate([
             'name' => 'required|max:255',
             'price' => 'required|min:4|max:255',
             'stock' => 'required|min:1|max:255',
@@ -46,7 +49,11 @@ class DashboardProductController extends Controller
             'image' => 'image|file|max:1024'
         ]);
 
-        Product::create($validateData);
+        // if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('product-images');
+        // }
+
+        Product::create($validatedData);
 
         return redirect('/dashboard/product')->with('success', 'New post has been added!');
     }
@@ -59,7 +66,9 @@ class DashboardProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('dashboard.product.show', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -70,7 +79,9 @@ class DashboardProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('dashboard.product.edit', [
+            'product' => $product,
+        ]);
     }
 
     /**
@@ -82,7 +93,33 @@ class DashboardProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $rules =  [
+            'name' => 'required|max:255',
+            'price' => 'required|max:255',
+            'stock' => 'required|max:255',
+            'weight' => 'required|max:255',
+            'image' => 'image|file|max:1024',
+            // 'slug' => 'required|unique:posts',
+            // 'body' => 'required'
+        ];
+
+        // if ($request->id != $product->id) {
+        //     $rules['id'] = 'required|unique:posts';
+        // }
+        
+        $validatedData = $request->validate($rules);
+        
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('product-images');    
+        }
+
+        Product::where('id', $product->id)
+                ->update($validatedData);
+
+        return redirect('/dashboard/product')->with('success', 'New post has been updated!');
     }
 
     /**
@@ -93,6 +130,12 @@ class DashboardProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if ($product->image) {
+            Storage::delete($product->image);
+        }
+
+        Product::destroy($product->id);
+
+        return redirect('/dashboard/product')->with('success', 'Product has been deleted!');
     }
 }

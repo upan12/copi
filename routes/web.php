@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\DashboardBlogController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardProductController;
-use App\Http\Controllers\HomepageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,11 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
+Route::get('/dashboard/blog/checkSlug', [DashboardBlogController::class, 'checkSlug']);
+
 Route::resource('/dashboard/menu', DashboardMenuController::class);
 Route::resource('/dashboard/product', DashboardProductController::class);
+Route::resource('/dashboard/blog', DashboardBlogController::class);
+
 
 require __DIR__ . '/auth.php';
