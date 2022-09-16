@@ -119,6 +119,7 @@ section{
     color:#fff;
 }
 
+.header .navbar a.active,
 .header .navbar a:hover{
     color:var(--main-color);
     border-bottom: .1rem solid var(--main-color);
@@ -229,107 +230,90 @@ section{
     text-align: center;
 }
 
-/* login */
-/* .login-form{
-    position: fixed;
-    top: 0; left: 0;
-    z-index: 1100;
+/* form beli */
+.form-beli{
     height: 100%;
     width: 100%;
-    background: rgba(0,0,0,.8);
-    display: none;
+    position: fixed;
+    top: -120%; left: 0;
+    z-index: 1000;
+    background: var(--bg);
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+}
+.form-beli.popup{
+    top: 0;
 }
 
-.login-form .active{
-    display: flex;
-
+.form-beli form{
+    width: 35rem;
+    background:#fff ;
+    margin: 0 2rem;
+    padding: 1rem 3rem;
+    border-radius: .5rem;
+    box-shadow: 0 .1rem .3rem #333;
+    position: relative;
 }
-
-
-.login-form form{
-        width: 50rem;
-        padding: 4rem;
-        background: #fff;
-        text-align: center;
-        position: relative;
-        animation: fadeIn 2s linear;
-}
-
-.login-form form #close-login-form{
-    position: absolute;
-    top: -4rem; right: 0;
+.form-beli form h3{
     font-size: 3rem;
-    cursor: pointer;
+    color: var(--main-color);
+    padding: 1rem 0;
+}
+.form-beli form .box{
+    width: 100%;
+    padding: 1rem 0;
+    margin: 1rem 0;
+    border-bottom: .2rem solid #666;
+    font-size: 1.6rem;
+    color: #333;
+    text-transform: none;
+}
+.form-beli form .box::placeholder{
+    text-transform: capitalize;
+}
+.form-beli form .box:focus{
+    border-color: var(--main-color);
+}
+.form-beli form .box:nth-child(3){
+    margin-bottom: 5rem;
+}
+.form-beli form p{
+    font-size: 2rem;
+    color: #333;
+    padding: .5rem 0;
+}
+.form-beli form p a{
+    color: var(--main-color);
+}
+.form-beli form .tuombol{
+    padding: .7rem 3rem;
+    font-size: 2rem;
     color: #fff;
+    background: var(--main-color);
+    border-radius: 5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    box-shadow: 0 .1rem .3rem rgba(0,0,0,.3);
 }
 
-.login-form form #close-login-form:hover{
-    transform: rotate(90deg);
+.form-beli form .tuombol{
+    width: 100%;
+    margin: 2rem 0;
 }
-.login-form .logo{
+.form-beli form .tuombol:hover{
+    background: #444;
+}
+.form-beli form .fa-times{
+    position: absolute;
+    top: 1.5rem; right: 2rem;
     font-size: 2.5rem;
-    color: var(--main-color);
-    font-weight: bolder;
-}
-.login-form form h3{
-    padding: 1rem 0;
-    font-size: 2rem;
-    text-transform: capitalize;
-    color: #010103;
-    margin-top: 1rem;
-}
-.login-form form .box{
-    width: 100%;
-    padding: 1.2rem 1.4rem;
-    border: .1rem solid #512a10;
-    font-size: 1.6rem;
-    margin: 1rem 0;
-}
-.login-form form .flex{
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    margin: 1rem 0;
-}
-.login-form form .flex label{
-    font-size: 1.5rem;
-    line-height: 2;
-    color: #666;
-    margin-bottom: 0rem;
     cursor: pointer;
+    color: #999;
 }
-.login-form form .flex a{
-    font-size: 1.5rem;
-    color: #512a10;
-    margin-left: auto;
+.form-beli form .fa-times{
+    color: #444;
 }
-.login-form form .flex a:hover{
-    text-decoration: underline !important;
-}
-.login-form .link-btn{
-    width: 100%;
-    margin-bottom: 1rem;
-}
-    .login-form .account{
-        padding:1.5rem .5rem;
-        background: rgb(188, 174, 174);
-        font-size: 1.5rem;
-        line-height: 2;
-        color: rgba(238, 238, 238, 0.261);
-    }
-    .login-form .account{
-        color: rgba(102, 102, 102, 0.805);
-    }
-    .login-form .account a{
-        color: #512a10;
-    }
-    .login-form .account a:hover{
-        text-decoration: underline !important;
-    }
- */
 
 /* end login */
 
@@ -391,63 +375,63 @@ section{
     line-height: 1.8;
 }
 
-.menu .box-container{
+.menu .menu-slider{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap:1.5rem;
 }
 
-.menu .box-container .box{
+.menu .menu-slider .box{
     padding:5rem;
     text-align: center;
     border:var(--border);    
 }
 
-.menu .box-container .box img{
+.menu .menu-slider .box img{
     height: 10rem;
 }
 
-.menu .box-container .box h3{
+.menu .menu-slider .box h3{
     color: #fff;
     font-size: 2rem;
     padding:1rem 0;
 }
 
-.menu .box-container .box .price{
+.menu .menu-slider .box .price{
     color: #fff;
     font-size: 2.5rem;
     padding:.5rem 0;
 }
 
-.menu .box-container .box .price span{
+.menu .menu-slider .box .price span{
     font-size: 1.5rem;
     text-decoration: line-through;
     font-weight: lighter;
 }
 
-.menu .box-container .box:hover{
+.menu .menu-slider .box:hover{
     background:#fff;
 }
 
-.menu .box-container .box:hover > *{
+.menu .menu-slider .box:hover > *{
     color:var(--black);
 }
 
 
 
-.products .box-container{
+.products .product-slider{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap:1.5rem;
 }
 
-.products .box-container .box{
+.products .product-slider .box{
     text-align: center;
     border:var(--border);
     padding: 2rem;
 }
 
-.products .box-container .box .icons a{
+.products .product-slider .box .icons a{
     height: 5rem;
     width: 5rem;
     line-height: 5rem;
@@ -457,38 +441,38 @@ section{
     margin:.3rem;
 }
 
-.products .box-container .box .icons a:hover{
+.products .product-slider .box .icons a:hover{
     background:var(--main-color);
 }
 
-.products .box-container .box .image{
+.products .product-slider .box .image{
     padding: 2.5rem 0;
 }
 
-.products .box-container .box .image img{
+.products .product-slider .box .image img{
     height: 25rem;
 }
 
-.products .box-container .box .content h3{
+.products .product-slider .box .content h3{
     color:#fff;
     font-size: 2.5rem;
 }
 
-.products .box-container .box .content .stars{
+.products .product-slider .box .content .stars{
     padding: 1.5rem;
 }
 
-.products .box-container .box .content .stars i{
+.products .product-slider .box .content .stars i{
     font-size: 1.7rem;
     color: var(--main-color);
 }
 
-.products .box-container .box .content .price{
+.products .product-slider .box .content .price{
     color:#fff;
     font-size: 2.5rem;
 }
 
-.products .box-container .box .content .price span{
+.products .product-slider .box .content .price span{
     text-decoration: line-through;
     font-weight: lighter;
     font-size: 1.5rem;
@@ -586,48 +570,48 @@ section{
     gap:1.5rem;
 }
 
-.blogs .box-container .box{
+.blogs .blogs-slider .box{
     border:var(--border);    
 }
 
-.blogs .box-container .box .image{
+.blogs .blogs-slider .box .image{
     height: 25rem;
     overflow:hidden;
     width: 100%;
 }
 
-.blogs .box-container .box .image img{
+.blogs .blogs-slider .box .image img{
     height: 100%;
     object-fit: cover;
     width: 100%;
 }
 
-.blogs .box-container .box:hover .image img{
+.blogs .blogs-slider .box:hover .image img{
     transform: scale(1.2);
 }
 
-.blogs .box-container .box .content{
+.blogs .blogs-slider .box .content{
     padding:2rem;
 }
 
-.blogs .box-container .box .content .title{
+.blogs .blogs-slider .box .content .title{
     font-size: 2.5rem;
     line-height: 1.5;
     color:#fff;
 }
 
-.blogs .box-container .box .content .title:hover{
+.blogs .blogs-slider .box .content .title:hover{
     color:var(--main-color);
 }
 
-.blogs .box-container .box .content span{
+.blogs .blogs-slider .box .content span{
     color:var(--main-color);
     display: block;
     padding-top: 1rem;
     font-size: 2rem;
 }
 
-.blogs .box-container .box .content p{
+.blogs .blogs-slider .box .content p{
     font-size: 1.6rem;
     line-height: 1.8;
     color:#ccc;

@@ -7,7 +7,7 @@
     </a>
 
     <nav class="navbar">
-        <a href="#home">home</a>
+        <a class="active" href="#home">home</a>
         <a href="#about">about</a>
         <a href="#menu">menu</a>
         <a href="#products">products</a>
