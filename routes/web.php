@@ -19,6 +19,7 @@ use App\Http\Controllers\DashboardProductController;
 
 Route::get('/', [HomepageController::class, 'index']);
 Route::post('/pesan', [HomepageController::class, 'pesan']);
+Route::post('/mesan', [HomepageController::class, 'mesan']);
 
 
 Route::get('/dashboard', function () {

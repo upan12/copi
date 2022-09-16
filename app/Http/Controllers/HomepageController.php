@@ -24,6 +24,7 @@ class HomepageController extends Controller
     public function pesan()
     {
         $data = $_POST;
+        // dd($data);
         // var_dump($data);
         
 
@@ -32,5 +33,17 @@ class HomepageController extends Controller
         $pesan = $data["pesan"];
         $noWa = $data["noWa"];
         header("location: https://api.whatsapp.com/send?phone=$noWa&text=Nama%20:%20$nama%0D%0AEmail%20:%20$email%0D%0APesan%20:%20$pesan");
+    }
+
+    public function mesan()
+    {
+        $data = $_POST;
+
+        $nama = $data["name"];
+        $menu = $data["menu"];
+        $variant = $data["variant"];
+        $noWa = $data["noWa"];
+        
+        header("location: https://api.whatsapp.com/send?phone=$noWa&text=Menu%20:%20$menu%0D%0AVariant%20:%20$variant&text=Nama%20:%20$nama");
     }
 }

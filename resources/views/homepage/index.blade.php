@@ -4,15 +4,40 @@
 
 <!-- form beli -->
 <div class="form-beli">
+        
+    @foreach ($menus as $menu)
+    <form action="/mesan" method="POST">
+        @csrf
+        <h3>Beli ?</h3>
+        <input type="hidden" name="noWa" value="6283122150023">
+        <input type="text" name="menu" value="{{ $menu->name }}" placeholder="Menu" class="box" required>
+        <label for="name"></label>
+        <input type="text" name="name" placeholder="Nama" class="box" required>
+        <p>Variant 
+            <fieldset>
+                <div class="some-class">
+                  <input type="radio" class="radio" name="variant" value="Hot" id="hot" />
+                  <label for="hot">Hot</label>
+                  <input type="radio" class="radio" name="variant" value="Ice" id="ice" />
+                  <label for="ice">Ice</label>
+                </div>
+                <p>Rp. {{ $menu->price }}</p>
+              </fieldset>
+        <input type="submit" class="tuombol" value="Pesan">
+        <i class="fas fa-times"></i>
+    </form>
+    @endforeach
 
-    <form action="">
+    {{-- @foreach ($products as $product) --}}
+    {{-- <form action="">
         <h3>Beli ?</h3>
         <p>Kopi <input type="text" placeholder="Menu" class="box"></p>
         <p>Size <input type="text" placeholder="Size" class="box"></p>
         <p>Beli yang lain ? <a href="#">click here</a></p>
-        <input type="submit" class="tuombol" value="login">
+        <input type="submit" class="tuombol" value="Pesan">
         <i class="fas fa-times"></i>
-    </form>
+    </form> --}}
+    {{-- @endforeach --}}
 
 </div>
 
@@ -89,32 +114,6 @@
 
     </section>
 
-    <section class="menu" id="menu">
-        @if ($menus->count())
-        <div class="swiper menu-slider">
-            
-            <div class="swiper-wrapper">
-
-                @foreach ($menus as $menu)
-                    <div class="swiper-slide box">
-                        <img src="/images/menu-1.png" alt="">
-                        <h3>{{ $menu->name }}</h3>
-                        <div class="price">Rp {{ $menu->price }} <span>8.913.749.032.804</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                @endforeach
-
-            </div>
-
-            <div class="swiper-pagination"></div>
-
-        </div>
-        @else
-        <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No Menu found</h3>
-        @endif
-
-    </section>
-
     <!-- menu section ends -->
     <section class="products" id="products">
 
@@ -150,47 +149,6 @@
                     @endforeach
                 </div>  
                 
-                <div class="swiper-pagination"></div>
-
-            </div>
-        @else
-        <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No product found</h3>
-        @endif
-
-    </section>
-
-    <section class="products" id="products">
-        
-
-        @if ($products->count())
-            <div class="swiper product-slider">
-
-                <div class="swiper-wrapper">
-                    @foreach ($products as $product)
-                        <div class="swiper-slide box">
-                            <div class="icons">
-                                <a href="#" class="fas fa-shopping-cart"></a>
-                                {{-- <a href="#" class="fas fa-heart"></a> --}}
-                                <a href="#" class="fas fa-eye"></a>
-                            </div>
-                            <div class="image">
-                                <img src="/images/product-1.png" alt="">
-                            </div>
-                            <div class="content">
-                                <h3>{{ $product->name }}</h3>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <div class="price">Rp {{ $product->price }} <span>Rp 9.290.382.109</span></div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>  
-
                 <div class="swiper-pagination"></div>
 
             </div>
@@ -304,6 +262,7 @@
 
         <h1 class="heading"> our <span>blogs</span> </h1>
 
+        @if ($blogs->count())
         <div class="swiper blogs-slider">
 
             <div class="swiper-wrapper">
@@ -325,7 +284,9 @@
             <div class="swiper-pagination"></div>
 
         </div>
-
+        @else
+        <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No blogs found</h3>
+        @endif
     </section>
 
     <!-- blogs section ends -->
