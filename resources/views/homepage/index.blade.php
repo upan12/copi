@@ -1,25 +1,20 @@
 @extends('layouts.main')
 @section('container')
-    <!-- Login -->
-    <!-- <div class="login-form">
-                <form action="">
-                    <div id="close-login-form" class="fas fa-times"></div>
-                    <a href="#" class="logo">
-                        <img src="/images/logo.png" alt="">
-                    </a>
-                    <h3>let's ngopi ngopi</h3>
-                    <input type="email" name="" placeholder="enter your email" id="" class="box">
-                    <input type="password" name="" placeholder="enter your password" id="" class="box">
-                    <div class="flex">
-                        <input type="checkbox" name="" id="remember-me">
-                        <label for="remember-me">remember me</label>
-                        <a href="">forgot password?</a>
-                    </div>
-                    <input type="submit" value="login now" class="link-btn">
-                    <p class="account">Don't have an account? <a href="#">create one!</a></p>
-                </form>
-            </div> -->
-    <!-- header section ends -->
+<!-- header section ends -->
+
+<!-- form beli -->
+<div class="form-beli">
+
+    <form action="">
+        <h3>Beli ?</h3>
+        <p>Kopi <input type="text" placeholder="Menu" class="box"></p>
+        <p>Size <input type="text" placeholder="Size" class="box"></p>
+        <p>Beli yang lain ? <a href="#">click here</a></p>
+        <input type="submit" class="tuombol" value="login">
+        <i class="fas fa-times"></i>
+    </form>
+
+</div>
 
     <!-- home section starts  -->
 
@@ -70,15 +65,48 @@
 
         <h1 class="heading"> our <span>menu</span> </h1>
         @if ($menus->count())
-        <div class="box-container">
-            @foreach ($menus as $menu)
-                <div class="box">
-                    <img src="/images/menu-1.png" alt="">
-                    <h3>{{ $menu->name }}</h3>
-                    <div class="price">Rp {{ $menu->price }} <span>8.913.749.032.804</span></div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            @endforeach
+        <div class="swiper menu-slider">
+            
+            <div class="swiper-wrapper">
+
+                @foreach ($menus as $menu)
+                    <div class="swiper-slide box">
+                        <img src="/images/menu-1.png" alt="">
+                        <h3>{{ $menu->name }}</h3>
+                        <div class="price">Rp {{ $menu->price }} <span>8.913.749.032.804</span></div>
+                        <a href="#" class="btn">add to cart</a>
+                    </div>
+                @endforeach
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+        @else
+        <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No Menu found</h3>
+        @endif
+
+    </section>
+
+    <section class="menu" id="menu">
+        @if ($menus->count())
+        <div class="swiper menu-slider">
+            
+            <div class="swiper-wrapper">
+
+                @foreach ($menus as $menu)
+                    <div class="swiper-slide box">
+                        <img src="/images/menu-1.png" alt="">
+                        <h3>{{ $menu->name }}</h3>
+                        <div class="price">Rp {{ $menu->price }} <span>8.913.749.032.804</span></div>
+                        <a href="#" class="btn">add to cart</a>
+                    </div>
+                @endforeach
+
+            </div>
+
+            <div class="swiper-pagination"></div>
 
         </div>
         @else
@@ -94,30 +122,77 @@
         
 
         @if ($products->count())
-            <div class="box-container">
-                @foreach ($products as $product)
-                    <div class="box">
-                        <div class="icons">
-                            <a href="#" class="fas fa-shopping-cart"></a>
-                            {{-- <a href="#" class="fas fa-heart"></a> --}}
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
-                        <div class="image">
-                            <img src="/images/product-1.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>{{ $product->name }}</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+            <div class="swiper product-slider">
+
+                <div class="swiper-wrapper">
+                    @foreach ($products as $product)
+                        <div class="swiper-slide box">
+                            <div class="icons">
+                                <a href="#" class="fas fa-shopping-cart"></a>
+                                {{-- <a href="#" class="fas fa-heart"></a> --}}
+                                <a href="#" class="fas fa-eye"></a>
                             </div>
-                            <div class="price">Rp {{ $product->price }} <span>Rp 9.290.382.109</span></div>
+                            <div class="image">
+                                <img src="/images/product-1.png" alt="">
+                            </div>
+                            <div class="content">
+                                <h3>{{ $product->name }}</h3>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="price">Rp {{ $product->price }} <span>Rp 9.290.382.109</span></div>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>  
+                
+                <div class="swiper-pagination"></div>
+
+            </div>
+        @else
+        <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No product found</h3>
+        @endif
+
+    </section>
+
+    <section class="products" id="products">
+        
+
+        @if ($products->count())
+            <div class="swiper product-slider">
+
+                <div class="swiper-wrapper">
+                    @foreach ($products as $product)
+                        <div class="swiper-slide box">
+                            <div class="icons">
+                                <a href="#" class="fas fa-shopping-cart"></a>
+                                {{-- <a href="#" class="fas fa-heart"></a> --}}
+                                <a href="#" class="fas fa-eye"></a>
+                            </div>
+                            <div class="image">
+                                <img src="/images/product-1.png" alt="">
+                            </div>
+                            <div class="content">
+                                <h3>{{ $product->name }}</h3>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="price">Rp {{ $product->price }} <span>Rp 9.290.382.109</span></div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>  
+
+                <div class="swiper-pagination"></div>
+
             </div>
         @else
         <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No product found</h3>
@@ -229,10 +304,11 @@
 
         <h1 class="heading"> our <span>blogs</span> </h1>
 
-        @if ($blogs->count())
-            <div class="box-container">
+        <div class="swiper blogs-slider">
+
+            <div class="swiper-wrapper">
                 @foreach ($blogs as $blog)
-                    <div class="box">
+                    <div class="swiper-slide box">
                         <div class="image">
                             <img src="/images/blog-1.jpeg" alt="">
                         </div>
@@ -245,9 +321,8 @@
                     </div>
                 @endforeach
             </div>
-        @else
-            <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No blogs found</h3>
-        @endif
+        
+            <div class="swiper-pagination"></div>
 
         </div>
 
