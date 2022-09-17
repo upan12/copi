@@ -17,12 +17,12 @@ use App\Http\Controllers\DashboardProductController;
 |
 */
 
-Route::get('/', [HomepageController::class, 'index']);
+Route::get('/', [HomepageController::class, 'index'])->middleware('guest');
 Route::post('/pesan', [HomepageController::class, 'pesan']);
 Route::post('/mesanMenu', [HomepageController::class, 'mesanMenu']);
 Route::post('/mesanProduct', [HomepageController::class, 'mesanProduct']);
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.index');
     });
@@ -34,11 +34,11 @@ Route::get('/login', function () {
     return view('layouts.app');
 });
 
-Route::get('/dashboard/blog/checkSlug', [DashboardBlogController::class, 'checkSlug']);
+Route::get('/dashboard/blog/checkSlug', [DashboardBlogController::class, 'checkSlug'])->middleware('auth');
 
-Route::resource('/dashboard/menu', DashboardMenuController::class);
-Route::resource('/dashboard/product', DashboardProductController::class);
-Route::resource('/dashboard/blog', DashboardBlogController::class);
+Route::resource('/dashboard/menu', DashboardMenuController::class)->middleware('auth');
+Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');
+Route::resource('/dashboard/blog', DashboardBlogController::class)->middleware('auth');
 
 
 require __DIR__ . '/auth.php';
