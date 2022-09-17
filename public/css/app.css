@@ -105,6 +105,7 @@ section{
     top:0; left: 0; right: 0;
     z-index: 1000;
 }
+
 .header .header.active{
     padding: 2rem 0;
 }
@@ -114,7 +115,7 @@ section{
 }
 
 .header .navbar a{
-    margin:0 1rem;
+    margin: 1.5rem;
     font-size: 1.6rem;
     color:#fff;
 }
@@ -673,6 +674,29 @@ section{
     color:var(--main-color);
 }
 
+fieldset {
+    overflow: hidden
+  }
+  
+  .some-class {
+    float: left;
+    clear: none;
+  }
+  
+  label {
+    float: left;
+    clear: none;
+    display: block;
+    padding: 0px 1em 0px 8px;
+    font-size: medium;
+  }
+  
+  input[type=radio],
+  input.radio {
+    float: left;
+    clear: none;
+    margin: 2px 0 0 2px;
+  }
 
 
 
@@ -711,7 +735,8 @@ section{
 
     .header .navbar{
         position: absolute;
-        top:100%; right: -100%;
+        top:100%;
+        right: -100%;
         background: #fff;
         width: 30rem;
         height: calc(100vh - 9.5rem);
@@ -726,7 +751,7 @@ section{
         display: block;
         margin:1.5rem;
         padding:.5rem;
-        font-size: 2rem;
+        font-size: 2rem; 
     }
 
     .header .search-form{
@@ -757,3 +782,4 @@ section{
     }
 
 }
+
