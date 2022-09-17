@@ -20,9 +20,16 @@ use App\Http\Controllers\DashboardProductController;
 Route::get('/', [HomepageController::class, 'index']);
 Route::post('/pesan', [HomepageController::class, 'pesan']);
 
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard.index');
+    });
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
+
+
+Route::get('/login', function () {
+    return view('layouts.app');
 });
 
 Route::get('/dashboard/blog/checkSlug', [DashboardBlogController::class, 'checkSlug']);

@@ -20,7 +20,7 @@
     <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
         <div class="fas fa-shopping-cart" id="cart-btn"></div>
-        <a href="#">
+        <a href="/login">
             <div class="fas fa-user" id="login-btn"></div>
         </a>
 
