@@ -32,8 +32,9 @@ class HomepageController extends Controller
         $email = $data["email"];
         $pesan = $data["pesan"];
         $noWa = $data["noWa"];
+        return redirect("https://api.whatsapp.com/send?phone=$noWa&text=Nama%20:%20$nama%0D%0AEmail%20:%20$email%0D%0APesan%20:%20$pesan");
 
-        header("location: https://api.whatsapp.com/send?phone=$noWa&text=Nama%20:%20$nama%0D%0AEmail%20:%20$email%0D%0APesan%20:%20$pesan");
+        // header("location: https://api.whatsapp.com/send?phone=$noWa&text=Nama%20:%20$nama%0D%0AEmail%20:%20$email%0D%0APesan%20:%20$pesan");
     }
 
     public function mesanMenu()
