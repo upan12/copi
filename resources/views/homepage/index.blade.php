@@ -2,57 +2,64 @@
 @section('container')
     <!-- header section ends -->
 
-    <!-- form beli -->
-    <div class="form-beli">
-
-        @foreach ($menus as $menu)
+    <!-- popup -->
+    @foreach ($menus as $menu)
+        <div class="form-beli menu_{{ $menu->id }}">
             <form action="/mesanMenu" method="POST" target="_blank">
                 @csrf
-                <h3>Beli ?</h3>
-                <input type="hidden" name="noWa" value="6283122150023">
-                <input type="text" name="menu" value="{{ $menu->name }}" placeholder="Menu" class="box" required>
-                <label for="name"></label>
-                <input type="text" name="name" placeholder="Nama" class="box" required>
-                <p>Variant
+                <h3>{{ $menu->name }}</h3>
+                <img src="/images/menu-1.png" style="" alt="">
+                <input type="hidden" name="noWa" value="+6283122150023">
+                <input type="hidden" name="menu" value="{{ $menu->name }}" placeholder="Menu" class="box" required>
+
+                <input type="text" name="name" placeholder="Your name" class="box" required >
+                <input type="number" name="amount" placeholder="Amount : 1" min="1" class="box" required>
+                <p style="font-size: small; margin-top:-12px; color:darkgray;">Stock: {{ $menu->stock }}</p>
+                <p style="margin-bottom: -15px; color:rgb(68, 68, 68)">Variant</p>
                 <fieldset>
-                    <div class="some-class">
-                        <input type="radio" class="radio" name="variant" value="Hot" id="hot" required />
-                        <label for="hot">Hot</label>
-                        <input type="radio" class="radio" name="variant" value="Ice" id="ice" required />
-                        <label for="ice">Ice</label>
-                    </div>
-                    <p>Rp. {{ $menu->price }}</p>
+                    <div class="some-class"><br>
+                        @if ($menu->variant != 'Hot / Ice')
+                            <input type="radio" class="radio" name="variant" value="{{ $menu->variant }}"
+                                id="{{ $menu->variant }}" checked="checked" />
+                            <label for="{{ $menu->variant }}">{{ $menu->variant }}</label>
+                        @else
+                            <input type="radio" class="radio" name="variant" value="Hot" id="hot" required />
+                            <label for="hot">Hot</label>
+                            <input type="radio" class="radio" name="variant" value="Ice" id="ice" required />
+                            <label for="ice">Ice</label>
+                        @endif
+                    </div><br><br>
+                    <input type="text" name="notes" placeholder="Note : Less Sugar" class="box">
+                    <p>Price : Rp. {{ $menu->price }}</p>
                 </fieldset>
                 <input type="submit" class="tuombol" value="Pesan">
                 <i class="fas fa-times"></i>
             </form>
-        @endforeach
+        </div>
+    @endforeach
 
-        @foreach ($products as $product)
+    @foreach ($products as $product)
+        <div class="form-beli-product product_{{ $product->id }}">
             <form action="/mesanProduct" method="POST" target="_blank">
                 @csrf
-                <h3>Beli ?</h3>
-                <input type="hidden" name="noWa" value="6283122150023">
-                <input type="text" name="product" value="{{ $product->name }}" placeholder="Menu" class="box"
+                <h3>{{ $product->name }}</h3>
+                <div class="image">
+                    <img src="/images/product-1.png" alt="">
+                </div>
+                <input type="hidden" name="noWa" value="+6283122150023">
+                <input type="hidden" name="product" value="{{ $product->name }}" placeholder="Menu" class="box"
                     required>
-                <label for="name"></label>
-                <input type="text" name="name" placeholder="Nama" class="box" required>
-                <p>Variant
-                <fieldset>
-                    <div class="some-class">
-                        <input type="radio" class="radio" name="variant" value="Hot" id="hot" required />
-                        <label for="hot">Hot</label>
-                        <input type="radio" class="radio" name="variant" value="Ice" id="ice" required />
-                        <label for="ice">Ice</label>
-                    </div>
-                    <p>Rp. {{ $product->price }}</p>
+                <input type="text" name="name" placeholder="Your name" class="box" required>
+                <input type="number" name="amount" placeholder="Amount : 1" min="1" class="box" required>
+                <p style="font-size: small; margin-top:-12px; color:darkgray;">Stock: {{ $product->stock }}</p>
+                <input type="text" name="notes" placeholder="Note : Beri Catatan" class="box">
+                <p>Rp. {{ $product->price }}</p>
                 </fieldset>
                 <input type="submit" class="tuombol" value="Pesan">
                 <i class="fas fa-times"></i>
             </form>
-        @endforeach
-
-    </div>
+        </div>
+    @endforeach
 
     <!-- home section starts  -->
 
@@ -112,14 +119,14 @@
                             <img src="/images/menu-1.png" alt="">
                             <h3>{{ $menu->name }}</h3>
                             <div class="price">Rp {{ $menu->price }} <span>8.913.749.032.804</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <a href="#" class="btn" id='{{ $menu->id }}'>add to cart</a>
                         </div>
                     @endforeach
 
                 </div>
 
-                <div class="swiper-pagination"></div>
 
+                <div class="swiper-pagination"></div>
             </div>
         @else
             <h3 class="" style="color: aliceblue; text-align:center; font-size:25px;">No Menu found</h3>
@@ -140,9 +147,9 @@
                     @foreach ($products as $product)
                         <div class="swiper-slide box">
                             <div class="icons">
-                                <a href="#" class="fas fa-shopping-cart"></a>
+                                <a href="#" id="{{ $product->id }}" class="fas fa-shopping-cart"></a>
                                 {{-- <a href="#" class="fas fa-heart"></a> --}}
-                                <a href="#" class="fas fa-eye"></a>
+                                <a href="#" id="{{ $product->id }}" class="fas fa-eye"></a>
                             </div>
                             <div class="image">
                                 <img src="/images/product-1.png" alt="">

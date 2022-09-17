@@ -43,24 +43,33 @@ class HomepageController extends Controller
         $nama = $data["name"];
         $menu = $data["menu"];
         $variant = $data["variant"];
-        $jumlah = 1000000;
-        $pesan = "Harus enak pokonya!! >:p";
+        $amount = $data["amount"];
+        $notes = $data["notes"];
         $noWa = $data["noWa"];
 
-        header("location: https://api.whatsapp.com/send?phone=$noWa&text=Hai%20kak,%0D%0ASaya%20pesan%20menu%20\"$menu\"%20:%20$jumlah,%20%20$variant%0D%0APesan%20:%20$pesan%0D%0AAtas%20Nama%20:%20$nama%0D%0ATerimakasih%20kak:)");
+        if (!$notes) {
+            return redirect("https://api.whatsapp.com/send?phone=$noWa&text=Hai%20kak,%0D%0ASaya%20pesan%20menu%20\"$menu\"%20:%20$amount,%20yang%20$variant%0D%0AAtas%20Nama%20:%20$nama%0D%0ATerimakasih%20kak:)");
+        }
+        return redirect("https://api.whatsapp.com/send?phone=$noWa&text=Hai%20kak,%0D%0ASaya%20pesan%20menu%20\"$menu\"%20:%20$amount,%20yang%20$variant%0D%0ANotes%20:%20$notes%0D%0AAtas%20Nama%20:%20$nama%0D%0ATerimakasih%20kak:)");
     }
 
     public function mesanProduct()
     {
         $data = $_POST;
+        // dd($data);
+
 
         $nama = $data["name"];
         $product = $data["product"];
-        $variant = $data["variant"];
-        $jumlah = 1000000;
-        $pesan = "Harus enak pokonya!! >:p";
+        $amount = $data["amount"];
+        $notes = $data["notes"];
         $noWa = $data["noWa"];
 
-        header("location: https://api.whatsapp.com/send?phone=$noWa&text=Hai%20kak,%0D%0ASaya%20pesan%20product%20\"$product\"%20:%20$jumlah,%20%20$variant%0D%0APesan%20:%20$pesan%0D%0AAtas%20Nama%20:%20$nama%0D%0ATerimakasih%20kak:)");
+
+        if (!$notes) {
+            return redirect("https://api.whatsapp.com/send?phone=$noWa&text=Hai%20kak,%0D%0ASaya%20pesan%20produk%20\"$product\"%20:%20$amount,%0D%0AAtas%20Nama%20:%20$nama%0D%0ATerimakasih%20kak:)");
+        }
+        return redirect("https://api.whatsapp.com/send?phone=$noWa&text=Hai%20kak,%0D%0ASaya%20pesan%20produk%20\"$product\"%20:%20$amount,%0D%0ANotes%20:%20$notes%0D%0AAtas%20Nama%20:%20$nama%0D%0ATerimakasih%20kak:)");
+        
     }
 }
