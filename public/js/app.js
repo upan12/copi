@@ -115,7 +115,7 @@ $(document).ready(function () {
         });
     });
 
-    $(".products .box .icons .fa-shopping-cart").click(function () {
+    $(".products .box .btn").click(function () {
         const id = this.getAttribute("id");
         $(`.form-beli-product.product_${id}`).addClass("popup");
     });

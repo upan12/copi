@@ -52,7 +52,7 @@
                 <input type="text" name="name" placeholder="Your name" class="box" required>
                 <input type="number" name="amount" placeholder="Amount : 1" min="1" class="box" required>
                 <p style="font-size: small; margin-top:-12px; color:darkgray;">Stock: {{ $product->stock }}</p>
-                <input type="text" name="notes" placeholder="Note : Beri Catatan" class="box">
+                <input type="text" name="notes" placeholder="Note : Harus enakkk!!!" class="box">
                 <p>Rp. {{ $product->price }}</p>
                 </fieldset>
                 <input type="submit" class="tuombol" value="Pesan">
@@ -119,7 +119,7 @@
                             <img src="/images/menu-1.png" alt="">
                             <h3>{{ $menu->name }}</h3>
                             <div class="price">Rp {{ $menu->price }} <span>8.913.749.032.804</span></div>
-                            <a href="#" class="btn" id='{{ $menu->id }}'>add to cart</a>
+                            <a href="#" class="btn" id='{{ $menu->id }}'>Add to cart</a>
                         </div>
                     @endforeach
 
@@ -146,11 +146,7 @@
                 <div class="swiper-wrapper">
                     @foreach ($products as $product)
                         <div class="swiper-slide box">
-                            <div class="icons">
-                                <a href="#" id="{{ $product->id }}" class="fas fa-shopping-cart"></a>
-                                {{-- <a href="#" class="fas fa-heart"></a> --}}
-                                <a href="#" id="{{ $product->id }}" class="fas fa-eye"></a>
-                            </div>
+                                <a href="#" class="btn" id='{{ $product->id }}'>Add to cart</a>
                             <div class="image">
                                 <img src="/images/product-1.png" alt="">
                             </div>
