@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
         Menu::factory(10)->create();
         Product::factory(10)->create();
         Blog::factory(10)->create();
+        User::create([
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('password'),
+                'is_admin' => '1'
+            ]);;
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

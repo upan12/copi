@@ -49,9 +49,9 @@ class DashboardProductController extends Controller
             'image' => 'image|file|max:1024'
         ]);
 
-        // if($request->file('image')) {
+        if($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('product-images');
-        // }
+        }
 
         Product::create($validatedData);
 

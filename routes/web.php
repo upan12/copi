@@ -36,6 +36,7 @@ Route::get('/login', function () {
 
 Route::get('/dashboard/blog/checkSlug', [DashboardBlogController::class, 'checkSlug'])->middleware('auth');
 
+// Route::get('/dashboard/menu/create', DashboardMenuController::class)->middleware('auth');
 Route::resource('/dashboard/menu', DashboardMenuController::class)->middleware('auth');
 Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');
 Route::resource('/dashboard/blog', DashboardBlogController::class)->middleware('auth');
