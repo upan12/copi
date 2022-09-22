@@ -48,9 +48,10 @@ class DashboardBlogController extends Controller
             'body' => 'required'
         ]);
 
-        // if ($request->file('image')) {
+        if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('blog-images');    
-        // }
+        }
+        
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body, 200));
 
         Blog::create($validatedData);

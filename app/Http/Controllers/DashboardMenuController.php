@@ -55,7 +55,9 @@ class DashboardMenuController extends Controller
             'image' => 'image|file|max:1024'
         ]);
 
+        if ($request->file('image')) {
         $validateData['image'] = $request->file('image')->store('menu-image');
+        }
 
         Menu::create($validateData);
 
