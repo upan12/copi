@@ -108,7 +108,7 @@
 
     <section class="menu" id="menu">
 
-        <h1 class="heading"> our <span>menu</span> </h1>
+        <h1 class="heading"> Our <span>menu</span> </h1>
         @if ($menus->count())
             <div class="swiper menu-slider">
 
@@ -137,7 +137,7 @@
     <!-- menu section ends -->
     <section class="products" id="products">
 
-        <h1 class="heading"> our <span>products</span> </h1>
+        <h1 class="heading"> Our <span>products</span> </h1>
 
 
         @if ($products->count())
