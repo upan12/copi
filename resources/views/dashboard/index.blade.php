@@ -5,6 +5,7 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Welcome back {{ auth()->user()->name }}</h1>
         </div>
+        @if ($count_menu->count())
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -20,6 +21,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if ($count_product->count())
                 <div class="col-4">
                     <div style="background-color: rgba(216, 216, 216, 0.377)" class="card border-0  text-center">
                         <div class="card-body text-center">
@@ -32,6 +35,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if ($count_blog->count())
                 <div class="col-4">
                     <div style="background-color: rgba(216, 216, 216, 0.377)" class="card border-0  text-center">
                         <div class="card-body text-center">
@@ -45,6 +50,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     @endauth
