@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardBlogController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardProductController;
@@ -36,7 +37,7 @@ Route::get('/login', function () {
 
 Route::get('/dashboard/blog/checkSlug', [DashboardBlogController::class, 'checkSlug'])->middleware('auth');
 
-// Route::get('/dashboard/menu/create', DashboardMenuController::class)->middleware('auth');
+Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
 Route::resource('/dashboard/menu', DashboardMenuController::class)->middleware('auth');
 Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');
 Route::resource('/dashboard/blog', DashboardBlogController::class)->middleware('auth');

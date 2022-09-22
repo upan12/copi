@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    
     public function index()
     {
         return view('dashboard.index', [
-            'count_menu' => DB::table('menus')->where("id")->count(),
-            'count_product' => DB::table('products')->where("id")->count(),
-            'count_blog' => DB::table('blogs')->where("id")->count()
+            'count_menu' => DB::table('menus')->count(),
+            'count_product' => DB::table('products')->count(),
+            'count_blog' => DB::table('blogs')->count()
         ]);
     }
 }
